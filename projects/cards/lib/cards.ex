@@ -1,18 +1,23 @@
 defmodule Cards do
-  @moduledoc """
-  Documentation for `Cards`.
-  """
+  def create_deck do
+    values = ["Ace", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King"]
+    suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+    for suit <- suits, value <- values do
+      "#{value} of #{suit}"
+    end
+  end
 
-  @doc """
-  Hello world.
+  def shuffle(deck) do
+    Enum.shuffle(deck)
+  end
 
-  ## Examples
+  # the ? at the end of the function name is a convention in Elixir
+  # to indicate that the function returns a boolean value
+  def contains?(deck, card) do
+    Enum.member?(deck, card)
+  end
 
-      iex> Cards.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
   end
 end
